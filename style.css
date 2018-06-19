@@ -1,0 +1,784 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: black;
+  min-height: 100%;
+  font-family: "Arial", sans-serif;
+}
+
+.wrap {
+  position: fixed;
+  height: 100%;
+    width: 100%;
+  min-height: 500px;
+  padding-bottom: 20px;
+}
+
+.main-menu-overlay-EN, 
+.main-menu-overlay-CH,
+.team-overlay,
+.gameover-overlay-EN, 
+.gameover-overlay-CH,
+.pause-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+    min-height: 700px;
+    min-width: 1164px;
+}
+.main-menu-overlay-EN, 
+.main-menu-overlay-CH,
+.team-overlay,
+.gameover-overlay-EN, 
+.gameover-overlay-CH { background: #81e3f2; }
+.pause-overlay { 
+    background: #4eb0bf;
+    z-index: 2; 
+    opacity: 0.93; 
+}
+.main-menu-overlay-EN .ball-animation-wrapper,
+.main-menu-overlay-CH .ball-animation-wrapper {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;  
+}
+.main-menu-overlay-EN .balls-left,
+.main-menu-overlay-EN .balls-right,
+.main-menu-overlay-CH .balls-left,
+.main-menu-overlay-CH .balls-right {
+    position: absolute;
+    top: 0;
+    animation: moveDown 5s infinite linear;
+    animation-play-state:running; /* ???? */
+}
+.main-menu-overlay-EN .balls-left,
+.main-menu-overlay-CH .balls-left { left: 3%; }
+.main-menu-overlay-EN .balls-right,
+.main-menu-overlay-CH .balls-right { right: 12%; } /* why does the right need to be bigger in order to be equally spaced on the page? */
+
+@-webkit-keyframes moveDown {
+    0% { -webkit-transform: translateY(0px); }
+    100% { -webkit-transform: translateY(760px); }
+}
+@-moz-keyframes moveDown {
+    0% { -webkit-transform: translateY(0px); }
+    100% { -webkit-transform: translateY(760px); }
+}
+@-ms-keyframes moveDown {
+    0% { -webkit-transform: translateY(0px); }
+    100% { -webkit-transform: translateY(760px); }
+}
+@keyframes moveDown {
+    0% { -webkit-transform: translateY(0px); }
+    100% { -webkit-transform: translateY(760px); }
+}
+
+.main-menu-overlay-EN .balls-left .ball-1,
+.main-menu-overlay-EN .balls-right .ball-1,
+.main-menu-overlay-CH .balls-left .ball-1,
+.main-menu-overlay-CH .balls-right .ball-1 { position: absolute; transform: translateY(-760px); }
+.main-menu-overlay-EN .balls-left .ball-2,
+.main-menu-overlay-EN .balls-right .ball-2,
+.main-menu-overlay-CH .balls-left .ball-2,
+.main-menu-overlay-CH .balls-right .ball-2 { position: absolute; transform: translateY(-380px); }
+.main-menu-overlay-EN .balls-left .ball-3,
+.main-menu-overlay-EN .balls-right .ball-3,
+.main-menu-overlay-CH .balls-left .ball-3,
+.main-menu-overlay-CH .balls-right .ball-3 { position: absolute; transform: translateY(0px); }
+.main-menu-overlay-EN .balls-left .ball-4,
+.main-menu-overlay-EN .balls-right .ball-4,
+.main-menu-overlay-CH .balls-left .ball-4,
+.main-menu-overlay-CH .balls-right .ball-4 { position: absolute; transform: translateY(380px); }
+
+.main-menu-overlay-EN .title .img, 
+.main-menu-overlay-CH .title .img,
+.win-modal-EN .black-winner .img,
+.win-modal-EN .yellow-winner .img,
+.lose-modal-EN .black-loser .img, 
+.lose-modal-EN .yellow-loser .img,
+.win-modal-CH .black-winner .img,
+.win-modal-CH .yellow-winner .img,
+.lose-modal-CH .black-loser .img,
+.lose-modal-CH .yellow-loser .img {
+    position: relative;
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+    width: 40%;
+    top: 15%;
+}
+.main-menu-modal-EN, 
+.main-menu-modal-CH,
+.team-modal-EN,
+.team-modal-CH,
+.pause-modal-EN,
+.pause-modal-CH {
+    display: none;
+    position: absolute;
+    width: 36%;
+    height: 45%;
+    left: 32%;
+    min-height: 320px;
+    min-width: 280px;
+    padding: 30px 10px;
+  /*max-height: 90%;
+  max-width: 90%;*/
+  /*margin: 0 auto;*/
+}
+.main-menu-modal-EN, 
+.main-menu-modal-CH { 
+    background: #81e3f2;
+    bottom: 5vmin; 
+}
+.pause-modal-EN,
+.pause-modal-CH {
+    background: #4eb0bf;
+    opacity: 0.93;
+    z-index: 2;
+    top: 40%;
+}
+.team-modal-EN,
+.team-modal-CH,
+.win-modal-EN,
+.lose-modal-EN,
+.win-modal-CH,
+.lose-modal-CH {
+    display: none;
+    position: absolute;
+    width: 50%;
+    height: 45%;
+    left: 25%;
+    top: 30%;
+    min-height: 320px;
+    min-width: 400px;
+    background: #81e3f2;
+    padding: 30px 10px;
+}
+.team-modal-EN .pick-team,
+.team-modal-CH .pick-team {
+    color: #ec4318;
+    font-size: 100px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 5px 5px #ffffff;
+    font-family: "Century Gothic", sans-serif;
+}
+.win-modal-EN .confetti-wrapper,
+.win-modal-CH .confetti-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.win-modal-EN .confetti-left,
+.win-modal-EN .confetti-right,
+.win-modal-CH .confetti-left,
+.win-modal-CH .confetti-right {
+    position: absolute;
+    width: 25%;
+    -webkit-animation: confettiFalling 3s infinite linear;
+}
+.win-modal-EN .confetti-left,
+.win-modal-CH .confetti-left { left: -35%; }
+.win-modal-EN .confetti-right,
+.win-modal-CH .confetti-right { right: -35%; }
+.win-modal-EN .confetti-1,
+.win-modal-CH .confetti-1,
+.win-modal-EN .confetti-2,
+.win-modal-CH .confetti-2,
+.win-modal-EN .confetti-3,
+.win-modal-CH .confetti-3,
+.win-modal-EN .confetti-4,
+.win-modal-CH .confetti-4,
+.win-modal-EN .confetti-5,
+.win-modal-CH .confetti-5,
+.win-modal-EN .confetti-6,
+.win-modal-CH .confetti-6,
+.win-modal-EN .confetti-7,
+.win-modal-CH .confetti-7 { position: absolute; width: 20px; height: 20px; }
+.win-modal-EN .confetti-1,
+.win-modal-CH .confetti-1 { 
+    right: 5%;
+    transform: translateY(20px);
+    background: red; 
+}
+.win-modal-EN .confetti-2,
+.win-modal-CH .confetti-2 {
+    left: 7%;
+    transform: translateY(-40px);
+    background: LightGreen;
+}
+.win-modal-EN .confetti-3,
+.win-modal-CH .confetti-3 {
+    right: 10%;
+    transform: translateY(-110px);
+    background: #01dcf5;
+}
+.win-modal-EN .confetti-4,
+.win-modal-CH .confetti-4 {
+    right: 40%;
+    transform: translateY(-200px);
+    background: yellow;
+}
+.win-modal-EN .confetti-5,
+.win-modal-CH .confetti-5 {
+    left: 7%;
+    transform: translateY(-260px);
+    background: red;
+}
+.win-modal-EN .confetti-6,
+.win-modal-CH .confetti-6 {
+    right: 8%;
+    transform: translateY(-310px);
+  background: blue;
+}
+.win-modal-EN .confetti-7,
+.win-modal-CH .confetti-7 {
+    right: 30%;
+    transform: translateY(-380px);
+    background: red;
+}
+@-webkit-keyframes confettiFalling {
+    0% { -webkit-transform: translateY(0px); }
+    100% { -webkit-transform: translateY(880px); }
+}
+@-moz-keyframes confettiFalling {
+    0% { -webkit-transform: translateY(0px); }
+    100% { -webkit-transform: translateY(880px); }
+}
+@-ms-keyframes confettiFalling {
+    0% { -webkit-transform: translateY(0px); }
+    100% { -webkit-transform: translateY(880px); }
+}
+@keyframes confettiFalling {
+    0% { -webkit-transform: translateY(0px); }
+    100% { -webkit-transform: translateY(880px); }
+}
+
+.main-menu-modal-EN .level-one, 
+.main-menu-modal-EN .level-two, 
+.main-menu-modal-EN .level-three, 
+.main-menu-modal-EN .chinese-version, 
+.main-menu-modal-CH .level-one, 
+.main-menu-modal-CH .level-two, 
+.main-menu-modal-CH .level-three, 
+.main-menu-modal-CH .english-version,
+.team-modal-EN .black,
+.team-modal-EN .yellow,
+.team-modal-CH .black,
+.team-modal-CH .yellow,
+.win-modal-EN .restart, 
+.lose-modal-EN .restart, 
+.win-modal-CH .restart, 
+.lose-modal-CH .restart,
+.pause-modal-EN .continue,
+.pause-modal-EN .quit,
+.pause-modal-CH .continue,
+.pause-modal-CH .quit {
+  font-family: "Chalkboard", sans-serif;
+  margin: 20px auto;
+  width: 210px;
+  height: 25px;
+  padding: 10px 20px;
+  display: block;
+  font-size: 24px;
+  cursor: pointer;
+  -webkit-box-sizing: class="support css-value">content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  -webkit-box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.4) ;
+  box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.4) ;
+  background-position: 50% 50%;
+  -webkit-background-origin: padding-box;
+  background-origin: padding-box;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-background-size: auto auto;
+  background-size: auto auto;
+  -webkit-box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.4) ;
+  box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.4) ;
+}
+.main-menu-modal-EN .level-one, 
+.main-menu-modal-EN .level-two, 
+.main-menu-modal-EN .level-three, 
+.main-menu-modal-EN .chinese-version, 
+.main-menu-modal-CH .level-one, 
+.main-menu-modal-CH .level-two, 
+.main-menu-modal-CH .level-three, 
+.main-menu-modal-CH .english-version,
+.win-modal-EN .restart, 
+.lose-modal-EN .restart, 
+.win-modal-CH .restart, 
+.lose-modal-CH .restart {
+    color: #1b7d8c;
+    border: 2px solid #1b7d8c;
+    background: #81e3f2;
+    background: -webkit-linear-gradient(-90deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.2) 100%), #81e3f2;
+    background: -moz-linear-gradient(180deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.2) 100%), #81e3f2;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.2) 100%), #81e3f2;
+}
+.team-modal-EN .black,
+.team-modal-CH .black {
+    color: black;
+    border: 2px solid black;
+    background: #81e3f2;
+    background: -webkit-linear-gradient(-90deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.2) 100%), #81e3f2;
+    background: -moz-linear-gradient(180deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.2) 100%), #81e3f2;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.2) 100%), #81e3f2;
+}
+.team-modal-EN .yellow,
+.team-modal-CH .yellow {
+    color: yellow;
+    border: 2px solid yellow;
+    background: #81e3f2;
+    background: -webkit-linear-gradient(-90deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.2) 100%), #81e3f2;
+    background: -moz-linear-gradient(180deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.2) 100%), #81e3f2;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.2) 100%), #81e3f2;
+}
+.pause-modal-EN .continue,
+.pause-modal-EN .quit,
+.pause-modal-CH .continue,
+.pause-modal-CH .quit {
+    font-weight: bold;
+    color: #004a59;
+    border: 2px solid #004a59;
+    background: #3597a6;
+    background: -webkit-linear-gradient(-90deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.2) 100%), #3597a6;
+    background: -moz-linear-gradient(180deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.2) 100%), #3597a6;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.2) 100%), #3597a6;
+}
+.main-menu-modal-EN .level-one:hover, 
+.main-menu-modal-EN .level-two:hover, 
+.main-menu-modal-EN .level-three:hover, 
+.main-menu-modal-EN .chinese-version:hover, 
+.main-menu-modal-CH .level-one:hover, 
+.main-menu-modal-CH .level-two:hover, 
+.main-menu-modal-CH .level-three:hover, 
+.main-menu-modal-CH .english-version:hover,
+.team-modal-EN .black:hover,
+.team-modal-EN .yellow:hover,
+.team-modal-CH .black:hover,
+.team-modal-CH .yellow:hover,
+.win-modal-EN .restart:hover, 
+.lose-modal-EN .restart:hover, 
+.win-modal-CH .restart:hover, 
+.lose-modal-CH .restart:hover {
+  background: -webkit-linear-gradient(-90deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.2) 100%), #68cad9;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.2) 100%), #68cad9;
+}
+.pause-modal-EN .continue:hover,
+.pause-modal-EN .quit:hover,
+.pause-modal-CH .continue:hover,
+.pause-modal-CH .quit:hover {
+  background: -webkit-linear-gradient(-90deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.2) 100%), #1b7d8c;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0, rgba(0,0,0,0.2) 100%), #1b7d8c;
+}
+
+.timer {
+    height: 18%;
+    width: 100%;
+    /*background: #f6d8ce;*/
+    background: #81e3f2;
+    font-family: "Arial Black", sans-serif;
+    text-align: center;
+}
+
+.timer .clock-wrapper {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin: 3vmin 25%;
+    min-width: 180px;
+    width: 25%;
+    height: 70%;
+}
+.timer .clock-wrapper::before { /* clock shadow: putting it as before is not what makes it appear behind the clock. What matters is setting the background color of the clock in another child of .clock-wrapper (.bg) so that it appears in front of this shadow */
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: -12%;
+    height: 40%;
+    z-index: -1;
+    display: block;
+    content: "";
+    /*background: #ddbfb5;*/
+    background: #68cad9;
+    transform: perspective(100vmin) rotateX(40deg) skewX(40deg) translateX(-2px);
+    transform-origin: bottom right;
+}
+.timer .clock-wrapper::after { /* clock stand */
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    bottom: -12%;
+    height: 10%;
+    display: block;
+    content: "";
+    background: #eeead1;
+    transform: perspective(200px) rotateX(20deg);
+}
+.timer .clock-wrapper .bg {
+    height: 100%;
+    widows: 100%;
+    background: #eeead1;
+    border-radius: 5px;
+}
+.timer .clock-wrapper .pause {
+    position: absolute;
+    top: auto;
+    right: 5%;
+    bottom: 28%;
+    width: 15%;
+    height: 50%;
+    color: #4ccca1;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    background: aquamarine;
+    border-radius: 5px;
+    border-color: #4ccca1;
+}
+.timer .clock-wrapper .mins,
+.timer .clock-wrapper .secs {
+    position: absolute;
+    top: 16%;
+    bottom: 10%;
+    width: 33%;
+}
+.timer .clock-wrapper .mins {left: 5%;}
+.timer .clock-wrapper .secs {right: 23%;}
+.timer .clock-wrapper .mins .tens,
+.timer .clock-wrapper .mins .ones,
+.timer .clock-wrapper .secs .tens,
+.timer .clock-wrapper .secs .ones {
+    position: absolute;
+    width: 45%;
+}
+.timer .clock-wrapper .mins .tens,
+.timer .clock-wrapper .secs .tens { left: 0;}
+.timer .clock-wrapper .mins .ones,
+.timer .clock-wrapper .secs .ones { right: 0;}
+.timer .clock-wrapper .mins .tens .number,
+.timer .clock-wrapper .mins .ones .number,
+.timer .clock-wrapper .secs .tens .number,
+.timer .clock-wrapper .secs .ones .number {
+    position: absolute;
+    width: 100%; 
+    height: 8vmin; /* why must this be in vmin and not % ? */
+    color: black;
+    font-size: 6vmin;
+    /*line-height: 5vmin;*/ /* what is this line-height for? */
+}
+.timer .clock-wrapper .mins .tens .number.active,
+.timer .clock-wrapper .mins .ones .number.active,
+.timer .clock-wrapper .secs .tens .number.active,
+.timer .clock-wrapper .secs .ones .number.active {
+    -webkit-animation: zIndexUp 0.5s forwards;
+    animation: zIndexUp 0.5s forwards;
+}
+.timer .clock-wrapper .mins .tens .number.outgoing,
+.timer .clock-wrapper .mins .ones .number.outgoing,
+.timer .clock-wrapper .secs .tens .number.outgoing,
+.timer .clock-wrapper .secs .ones .number.outgoing {
+    -webkit-animation: zIndexDown 0.5s forwards;
+    animation: zIndexDown 0.5s forwards;
+}
+@-webkit-keyframes zIndexUp {   /* test these out individually */
+    0% { z-index: 1; }
+    100% { z-index: 2; }
+}
+@-moz-keyframes zIndexUp {
+    0% { z-index: 1; }
+    100% { z-index: 2; }
+}
+@-ms-keyframes zIndexUp {
+    0% { z-index: 1; }
+    100% { z-index: 2; }
+}
+@keyframes zIndexUp {
+    0% { z-index: 1; }
+    100% { z-index: 2; }
+}
+@-webkit-keyframes zIndexDown {
+    0% { z-index: 2; }
+    100% { z-index: 1; }
+}
+@-moz-keyframes zIndexDown {
+    0% { z-index: 2; }
+    100% { z-index: 1; }
+}
+@-ms-keyframes zIndexDown {
+    0% { z-index: 2; }
+    100% { z-index: 1; }
+}
+@keyframes zIndexDown {
+    0% { z-index: 2; }
+    100% { z-index: 1; }
+}
+
+
+.timer .clock-wrapper .mins .tens .number .top,
+.timer .clock-wrapper .mins .tens .number .bottom,
+.timer .clock-wrapper .mins .ones .number .top,
+.timer .clock-wrapper .mins .ones .number .bottom,
+.timer .clock-wrapper .secs .tens .number .top,
+.timer .clock-wrapper .secs .tens .number .bottom,
+.timer .clock-wrapper .secs .ones .number .top,
+.timer .clock-wrapper .secs .ones .number .bottom {
+    position: absolute;
+    width: 100%;
+    height: 48%;
+    overflow: hidden;
+    background: #f6f6e2;
+    box-shadow: 2px 2px #bbb79e inset;
+    border-radius: 3.5px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: none;
+}
+/* add top, bottom :before for shadow of the flip */
+.timer .clock-wrapper .mins .tens .number .top,
+.timer .clock-wrapper .mins .ones .number .top,
+.timer .clock-wrapper .secs .tens .number .top,
+.timer .clock-wrapper .secs .ones .number .top {
+    position: absolute;
+    top: 0;
+    transform-origin: bottom center;
+}
+.timer .clock-wrapper .mins .tens .number .top .digit,
+.timer .clock-wrapper .mins .ones .number .top .digit,
+.timer .clock-wrapper .secs .tens .number .top .digit,
+.timer .clock-wrapper .secs .ones .number .top .digit {
+    position: absolute;
+    line-height: 8vmin;
+    width: 100%;
+}
+.timer .clock-wrapper .mins .tens .number .bottom,
+.timer .clock-wrapper .mins .ones .number .bottom,
+.timer .clock-wrapper .secs .tens .number .bottom,
+.timer .clock-wrapper .secs .ones .number .bottom {
+    position: absolute;
+    bottom: 0;
+    -webkit-transform: perspective(100vmin) rotateX(180deg);
+    transform: perspective(100vmin) rotateX(180deg); /* every bottom card starts out rotatedX at 180deg. Since backface = hidden, you don't see it until the number is active. */
+    transform-origin: top center;
+}
+.timer .clock-wrapper .mins .tens .number .bottom .digit,
+.timer .clock-wrapper .mins .ones .number .bottom .digit,
+.timer .clock-wrapper .secs .tens .number .bottom .digit,
+.timer .clock-wrapper .secs .ones .number .bottom .digit{
+    position: absolute;
+    bottom: 0;
+    line-height: 8vmin;
+    width: 100%;
+}
+.timer .clock-wrapper .mins .tens .number.active .bottom,
+.timer .clock-wrapper .mins .tens .number.outgoing .bottom,
+.timer .clock-wrapper .mins .ones .number.active .bottom,
+.timer .clock-wrapper .mins .ones .number.outgoing .bottom,
+.timer .clock-wrapper .secs .tens .number.active .bottom,
+.timer .clock-wrapper .secs .tens .number.outgoing .bottom,
+.timer .clock-wrapper .secs .ones .number.active .bottom,
+.timer .clock-wrapper .secs .ones .number.outgoing .bottom {
+    -webkit-transform: perspective(100vmin) rotateX(0deg);
+    transform: perspective(100vmin) rotateX(0deg); /* once the number is active/outgoing, the bottom should rotateX to 0deg. Since it started out at 180deg, this makes it flip over (downwards). Going from active->outgoing keeps it unmoving. I need this .number .outgoing .bottom category, otherwise it would flip back to what it was for just .number .bottom (180deg) */
+    -webkit-transition: transform 0.5s;
+    transition: transform 0.5s;
+}
+.timer .clock-wrapper .mins .tens .number.outgoing .top,
+.timer .clock-wrapper .mins .ones .number.outgoing .top, 
+.timer .clock-wrapper .secs .tens .number.outgoing .top,
+.timer .clock-wrapper .secs .ones .number.outgoing .top {
+    -webkit-transform: perspective(100vmin) rotateX(-180deg);
+    transform: perspective(100vmin) rotateX(-180deg); /* the outgoing number on the top rotatesX to -180deg, so since .active .top default is at 0deg, active->outgoing causes it to flip downwards. If it was already .outgoing before, it doesn't move b/c it stays at -180deg. */
+    -webkit-transition: transform 0.5s;
+    transition: transform 0.5s;
+}
+.timer .clock-wrapper .mins .tens .number.skip .top,
+.timer .clock-wrapper .mins .ones .number.skip .top,
+.timer .clock-wrapper .secs .tens .number.skip .top,
+.timer .clock-wrapper .secs .ones .number.skip .top {
+    -webkit-transform: rotateX(-180deg);
+    transform: rotateX(-180deg);
+}
+
+.game {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 500px;
+          perspective: 500px;
+  min-height: 626px;
+    min-width: 750px;
+  height: 90%;
+    padding: 30px;
+    background: #81e3f2;
+}
+
+
+@-webkit-keyframes matchAnim {
+  0% {
+    background: #bcffcc;
+  }
+  100% {
+    background: white;
+  }
+}
+
+@keyframes matchAnim {
+  0% {
+    background: #bcffcc;
+  }
+  100% {
+    background: white;
+  }
+}
+
+.card {
+  float: left;
+  padding: 5px;
+  text-align: center;
+  display: block;
+  -webkit-perspective: 500px;
+          perspective: 500px;
+  position: relative;
+  cursor: pointer;
+  z-index: 50;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 800px) {
+    .card {
+        width: 25%;
+        height: 16.666%;
+    }
+}
+.card .inside {
+  width: 100%;
+  height: 100%;
+  display: block;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: .4s ease-in-out;
+  transition: .4s ease-in-out;
+  background: white;
+}
+.card .inside.picked, .card .inside.matched {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+.card .inside.matched {
+  -webkit-animation: 1s matchAnim ease-in-out;
+          animation: 1s matchAnim ease-in-out;
+  -webkit-animation-delay: .4s;
+          animation-delay: .4s;
+}
+.card .front, .card .back {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+.card .front.black,
+.card .back.black { border: 3px solid black; }
+.card .front.yellow,
+.card .back.yellow { border: 3px solid yellow; }
+
+.card .front img, .card .back img {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  max-height: 100%;
+}
+.card .front {
+  -webkit-transform: rotateY(-180deg); /* this means the front starts out flipped over. Since backface is hidden, it doesn't show when the card has not been flipped. */
+          transform: rotateY(-180deg);
+}
+@media (max-width: 800px) {
+  .card .front {
+    padding: 5px;
+  }
+}
+.card .back {
+  -webkit-transform: rotateY(0); /* this just shows that the back of the card (w/ the icon image) start facing the user. Once the card is flipped, it turns and the backface is hidden, so the user no longer sees it. */
+          transform: rotateY(0);
+}
+.lose-modal-CH .sorry {
+    position: absolute;
+    transform: translate(400px,-400px) rotateZ(5deg);
+}
+.lose-modal-EN .smoke-wrapper,
+.lose-modal-CH .smoke-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.lose-modal-EN .smoke-animation,
+.lose-modal-CH .smoke-animation {
+    position: absolute;
+    animation: smokeMove 2s infinite linear;
+    animation-play-state: running;
+}
+@-webkit-keyframes smokeMove {
+    0% { -webkit-transform: translateY(0px); }
+    50% { -webkit-transform: translateY(-30px); }
+    100% { -webkit-transform: translateY(0px); }
+}
+@-moz-keyframes smokeMove {
+    0% { -webkit-transform: translateY(0px); }
+    50% { -webkit-transform: translateY(-30px); }
+    100% { -webkit-transform: translateY(0px); }
+}
+@-ms-keyframes smokeMove {
+    0% { -webkit-transform: translateY(0px); }
+    50% { -webkit-transform: translateY(-30px); }
+    100% { -webkit-transform: translateY(0px); }
+}
+@keyframes smokeMove {
+    0% { -webkit-transform: translateY(0px); }
+    50% { -webkit-transform: translateY(-30px); }
+    100% { -webkit-transform: translateY(0px); }
+}
+.lose-modal-EN .smoke-1,
+.lose-modal-CH .smoke-1 { position: absolute; transform: translate(-100px,-100px); }
+.lose-modal-EN .smoke-2,
+.lose-modal-CH .smoke-2 { position: absolute; transform: translate(-300px,100px); }
+.lose-modal-EN .smoke-3,
+.lose-modal-CH .smoke-3 { position: absolute; transform: translate(800px,-100px); }
+.lose-modal-EN .smoke-4,
+.lose-modal-CH .smoke-4 { position: absolute; transform: translate(1000px,100px); }
+
+
+@media (max-width: 800px) {
+  .card .back {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .win-modal-EN .winner, .lose-modal-EN .loser, .win-modal-CH .winner, .lose-modal-CH .loser {
+    font-size: 60px;
+  }
+}

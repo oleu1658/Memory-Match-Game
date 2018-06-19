@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Memory Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="wrap">
+      
+    <div class="main-menu-overlay-EN">
+        <div class="title"><img src="Images/Title-english.png"></div>
+        <div class="ball-animation-wrapper">
+            <div class="balls-left">
+                <div class="ball-1"><img src="Images/Ball-Image.png"></div>
+                <div class="ball-2"><img src="Images/Ball-Image.png"></div>
+                <div class="ball-3"><img src="Images/Ball-Image.png"></div>
+                <div class="ball-4"><img src="Images/Ball-Image.png"></div>
+            </div>
+            <div class="balls-right">
+                <div class="ball-1"><img src="Images/Ball-Image.png"></div>
+                <div class="ball-2"><img src="Images/Ball-Image.png"></div>
+                <div class="ball-3"><img src="Images/Ball-Image.png"></div>
+                <div class="ball-4"><img src="Images/Ball-Image.png"></div>
+            </div>
+        </div>
+		<div class="main-menu-modal-EN">
+            <button class ="level-one">Level One</button>
+            <button class ="level-two">Level Two</button>
+            <button class ="level-three">Level Three</button>
+            <button class ="chinese-version">中文版</button>
+        </div>
+	</div>
+    
+    <div class="main-menu-overlay-CH">
+        <div class="title"><img src="Images/Title.png"></div>
+        <div class="ball-animation-wrapper">
+            <div class="balls-left">
+                <div class="ball-1"><img src="Images/Ball-Image.png"></div>
+                <div class="ball-2"><img src="Images/Ball-Image.png"></div>
+                <div class="ball-3"><img src="Images/Ball-Image.png"></div>
+                <div class="ball-4"><img src="Images/Ball-Image.png"></div>
+            </div>
+            <div class="balls-right">
+                <div class="ball-1"><img src="Images/Ball-Image.png"></div>
+                <div class="ball-2"><img src="Images/Ball-Image.png"></div>
+                <div class="ball-3"><img src="Images/Ball-Image.png"></div>
+                <div class="ball-4"><img src="Images/Ball-Image.png"></div>
+            </div>
+        </div>
+		<div class="main-menu-modal-CH">
+            <button class ="level-one">第一級</button>
+            <button class ="level-two">第二級</button>
+            <button class ="level-three">第三級</button>
+            <button class ="english-version">English version</button>
+        </div>
+	</div>
+      
+      <div class="team-overlay">
+          <div class="team-modal-EN">
+              <div class="pick-team">Pick a team</div>
+              <button class="black">Black Team</button>
+              <button class="yellow">Yellow Team</button>
+          </div>
+          <div class="team-modal-CH">
+              <div class="pick-team">請選一隊</div>
+              <button class="black">黑隊</button>
+              <button class="yellow">黃隊</button>
+          </div>
+      </div>
+      
+      <div class="timer" hidden>
+              <div class="clock-wrapper">
+                  <div class="bg"></div>
+                  <button class="pause">II</button>
+                  <div class="mins">
+                      <div class="tens">
+                          <div class="number active" id="mins-tens-0">
+                              <div class="top">
+                                  <div class="digit">0</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">0</div>
+                              </div>
+                          </div>
+                          <div class="number" id="mins-tens-1">
+                              <div class="top">
+                                  <div class="digit">1</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">1</div>
+                              </div>
+                          </div>
+                          <div class="number" id="mins-tens-2">
+                              <div class="top">
+                                  <div class="digit">2</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">2</div>
+                              </div>
+                          </div>
+                          <div class="number" id="mins-tens-3">
+                              <div class="top">
+                                  <div class="digit">3</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">3</div>
+                              </div>
+                          </div>
+                          <div class="number" id="mins-tens-4">
+                              <div class="top">
+                                  <div class="digit">4</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">4</div>
+                              </div>
+                          </div>
+                          <div class="number" id="mins-tens-5">
+                              <div class="top">
+                                  <div class="digit">5</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">5</div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="ones">
+                          <div class="number active" id="mins-ones-0">
+                              <div class="top">
+                                  <div class="digit">0</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">0</div>
+                              </div>
+                          </div>
+                          <div class="number" id="mins-ones-1">
+                              <div class="top">
+                                  <div class="digit">1</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">1</div>
+                              </div>
+                          </div>
+                          <div class="number" id="mins-ones-2">
+                              <div class="top">
+                                  <div class="digit">2</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">2</div>
+                              </div>
+                          </div>
+                          <div class="number" id="mins-ones-3">
+                              <div class="top">
+                                  <div class="digit">3</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">3</div>
+                              </div>
+                          </div>
+                          <div class="number" id="mins-ones-4">
+                              <div class="top">
+                                  <div class="digit">4</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">4</div>
+                              </div>
+                          </div>
+                          <div class="number" id="mins-ones-5">
+                              <div class="top">
+                                  <div class="digit">5</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">5</div>
+                              </div>
+                          </div>
+                          <div class="number" id="mins-ones-6">
+                              <div class="top">
+                                  <div class="digit">6</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">6</div>
+                              </div>
+                          </div>
+                          <div class="number" id="mins-ones-7">
+                              <div class="top">
+                                  <div class="digit">7</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">7</div>
+                              </div>
+                          </div>
+                          <div class="number" id="mins-ones-8">
+                              <div class="top">
+                                  <div class="digit">8</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">8</div>
+                              </div>
+                          </div>
+                          <div class="number" id="mins-ones-9">
+                              <div class="top">
+                                  <div class="digit">9</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">9</div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="secs">
+                      <div class="tens">
+                          <div class="number active" id="secs-tens-0">
+                              <div class="top">
+                                  <div class="digit">0</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">0</div>
+                              </div>
+                          </div>
+                          <div class="number" id="secs-tens-1">
+                              <div class="top">
+                                  <div class="digit">1</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">1</div>
+                              </div>
+                          </div>
+                          <div class="number" id="secs-tens-2">
+                              <div class="top">
+                                  <div class="digit">2</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">2</div>
+                              </div>
+                          </div>
+                          <div class="number" id="secs-tens-3">
+                              <div class="top">
+                                  <div class="digit">3</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">3</div>
+                              </div>
+                          </div>
+                          <div class="number" id="secs-tens-4">
+                              <div class="top">
+                                  <div class="digit">4</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">4</div>
+                              </div>
+                          </div>
+                          <div class="number" id="secs-tens-5">
+                              <div class="top">
+                                  <div class="digit">5</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">5</div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="ones">
+                          <div class="number active" id="secs-ones-0">
+                              <div class="top">
+                                  <div class="digit">0</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">0</div>
+                              </div>
+                          </div>
+                          <div class="number" id="secs-ones-1">
+                              <div class="top">
+                                  <div class="digit">1</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">1</div>
+                              </div>
+                          </div>
+                          <div class="number" id="secs-ones-2">
+                              <div class="top">
+                                  <div class="digit">2</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">2</div>
+                              </div>
+                          </div>
+                          <div class="number" id="secs-ones-3">
+                              <div class="top">
+                                  <div class="digit">3</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">3</div>
+                              </div>
+                          </div>
+                          <div class="number" id="secs-ones-4">
+                              <div class="top">
+                                  <div class="digit">4</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">4</div>
+                              </div>
+                          </div>
+                          <div class="number" id="secs-ones-5">
+                              <div class="top">
+                                  <div class="digit">5</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">5</div>
+                              </div>
+                          </div>
+                          <div class="number" id="secs-ones-6">
+                              <div class="top">
+                                  <div class="digit">6</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">6</div>
+                              </div>
+                          </div>
+                          <div class="number" id="secs-ones-7">
+                              <div class="top">
+                                  <div class="digit">7</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">7</div>
+                              </div>
+                          </div>
+                          <div class="number" id="secs-ones-8">
+                              <div class="top">
+                                  <div class="digit">8</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">8</div>
+                              </div>
+                          </div>
+                          <div class="number" id="secs-ones-9">
+                              <div class="top">
+                                  <div class="digit">9</div>
+                              </div>
+                              <div class="bottom">
+                                  <div class="digit">9</div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+              </div>
+      </div>
+      
+      <div class="game" hidden></div>
+      
+      <div class="pause-overlay">
+            <div class="pause-modal-EN">
+                <button class="continue">Continue</button>
+                <button class="quit">Quit</button>
+            </div>
+            <div class="pause-modal-CH">
+                <button class="continue">繼續</button>
+                <button class="quit">放棄</button>
+            </div>
+      </div>
+      
+	
+	<div class="gameover-overlay-EN">
+            <div class="win-modal-EN">
+                <div class="confetti-wrapper">
+                     <div class="confetti-left">
+                         <div class="confetti-1"></div>
+                         <div class="confetti-2"></div>
+                         <div class="confetti-3"></div>
+                         <div class="confetti-4"></div>
+                         <div class="confetti-5"></div>
+                         <div class="confetti-6"></div>
+                         <div class="confetti-7"></div>
+                     </div>
+                     <div class="confetti-right">
+                         <div class="confetti-1"></div>
+                         <div class="confetti-2"></div>
+                         <div class="confetti-3"></div>
+                         <div class="confetti-4"></div>
+                         <div class="confetti-5"></div>
+                         <div class="confetti-6"></div>
+                         <div class="confetti-7"></div>
+                     </div>
+                </div>
+                <h2 class="black-winner" hidden><img src="Images/Black-Win.png"></h2>
+                <h2 class="yellow-winner" hidden><img src="Images/Yellow-Win.png"></h2>
+			     <button class="restart">Play Again</button>
+            </div>
+            <div class="lose-modal-EN">
+                <div class="smoke-wrapper">
+                    <div class="smoke-animation">
+                        <div class="smoke-1"><img src="Images/Lose-Symbol.png"></div>
+                        <div class="smoke-2"><img src="Images/Lose-Symbol.png"></div>
+                        <div class="smoke-3"><img src="Images/Lose-Symbol.png"></div>
+                        <div class="smoke-4"><img src="Images/Lose-Symbol.png"></div>
+                    </div>
+                </div>
+                <h2 class="black-loser" hidden><img src="Images/Yellow-Win.png"></h2>
+                <h2 class="yellow-loser" hidden><img src="Images/Black-Win.png"></h2>
+			     <button class="restart">Try Again</button>
+            </div>
+	</div>
+    <div class="gameover-overlay-CH">
+            <div class="win-modal-CH">
+                <div class="confetti-wrapper">
+                     <div class="confetti-left">
+                         <div class="confetti-1"> </div>
+                         <div class="confetti-2"> </div>
+                         <div class="confetti-3"> </div>
+                         <div class="confetti-4"> </div>
+                         <div class="confetti-5"> </div>
+                         <div class="confetti-6"> </div>
+                         <div class="confetti-7"> </div>
+                     </div>
+                     <div class="confetti-right">
+                         <div class="confetti-1"> </div>
+                         <div class="confetti-2"> </div>
+                         <div class="confetti-3"> </div>
+                         <div class="confetti-4"> </div>
+                         <div class="confetti-5"> </div>
+                         <div class="confetti-6"> </div>
+                         <div class="confetti-7"> </div>
+                     </div>
+                </div>
+                <h2 class="black-winner" hidden><img src="Images/Black-Win-CH.png"></h2>
+                <h2 class="yellow-winner" hidden><img src="Images/Yellow-Win-CH.png"></h2>
+			     <button class="restart">再玩一次</button>
+            </div>
+            <div class="lose-modal-CH">
+                <div class="smoke-wrapper">
+                    <div class="smoke-animation">
+                        <div class="smoke-1"><img src="Images/Lose-Symbol.png"></div>
+                        <div class="smoke-2"><img src="Images/Lose-Symbol.png"></div>
+                        <div class="smoke-3"><img src="Images/Lose-Symbol.png"></div>
+                        <div class="smoke-4"><img src="Images/Lose-Symbol.png"></div>
+                    </div>
+                </div>
+                <h2 class="black-loser" hidden><img src="Images/Yellow-Win-CH.png"></h2>
+                <h2 class="yellow-loser" hidden><img src="Images/Black-Win-CH.png"></h2>
+                <h2 class="sorry"><img src="Images/Lose-Text.png"></h2>
+			     <button class="restart">再玩一次</button>
+            </div>
+	</div>
+      
+  </div><!-- End Wrap -->
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script  src="js/index.js"></script>
+</body>
+    
+    
+</html>
